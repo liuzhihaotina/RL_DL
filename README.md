@@ -46,10 +46,20 @@ RL_DL/
 │   ├── manual_nn.py        # 手写 Linear / ReLU / MLP（只用 Tensor + autograd）
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
-│   └── 01_mlp_moons.py     # 实验 01：手写 MLP 训练与评估
+│   ├── 01_mlp_moons.py     # 实验 01：手写 MLP 训练与评估
+│   └── 02_visual_explain.py  # 生成实验 01 的三张图解
 ├── tests/
 │   └── test_smoke.py       # 环境冒烟测试
 └── outputs/                # 实验产物（本地生成，不入库）
+```
+
+## 图解
+
+实验 01 的流程图、网络结构、决策边界见 [docs/01_walkthrough.md](docs/01_walkthrough.md)。
+图由脚本生成，改完超参后重新跑：
+
+```bash
+uv run python scripts/02_visual_explain.py
 ```
 
 ## 学习路线
