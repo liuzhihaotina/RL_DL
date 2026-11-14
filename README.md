@@ -20,14 +20,14 @@
 # 1. 安装依赖（含 CUDA 版 torch，首次约 2~3 GB）
 uv sync
 
-# 2. 跑通第一个实验：手写 MLP 分类 two-moons（约 10 秒）
-uv run --no-sync python scripts/01_mlp_moons.py
+# 2. 跑通第一个实验：手写 MLP 分类 two-moons（GPU 上约 2 秒）
+uv run python scripts/01_mlp_moons.py
 
 # 强制用 CPU / 换超参
-uv run --no-sync python scripts/01_mlp_moons.py --device cpu --steps 1000 --lr 0.1
+uv run python scripts/01_mlp_moons.py --device cpu --steps 1000 --lr 0.1
 
 # 3. 运行测试
-uv run --no-sync pytest
+uv run pytest
 ```
 
 实验产物（曲线图、模型权重、数据快照）写到 `outputs/`，已被 `.gitignore` 忽略。

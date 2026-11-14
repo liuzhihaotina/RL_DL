@@ -37,13 +37,13 @@ powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 uv sync
 
 # 3. 验证
-uv run --no-sync python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))"
+uv run python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))"
 # 期望：2.10.0+cu128 True NVIDIA GeForce RTX 4050 Laptop GPU
 
-uv run --no-sync pytest
+uv run pytest
 # 期望：3 passed
 
-uv run --no-sync python scripts/01_mlp_moons.py
+uv run python scripts/01_mlp_moons.py
 # 期望：device = cuda，约 2 秒跑完 1500 步，val_acc ≈ 0.99
 ```
 
@@ -71,7 +71,8 @@ uv pip install --no-deps ./torch-2.10.0+cu128-cp311-cp311-win_amd64.whl
 ```bash
 uv sync                 # 按 uv.lock 同步环境
 uv add <pkg>            # 新增依赖并更新 lock
-uv run --no-sync ...    # 在项目环境里执行命令（跳过自动同步）
-uv run --no-sync ruff check .
-uv run --no-sync pytest
+uv run ...              # 在项目环境里执行命令（自动同步）
+uv run ruff check .
+uv run pytest
+uv run --no-sync ...    # 跳过自动同步（本地手装 torch 时用）
 ```
