@@ -1,0 +1,63 @@
+[project]
+name = "rldl"
+version = "0.1.0"
+description = "从零学习深度学习与强化学习：手写模型、手写训练循环、逐步实现 RL 算法"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "tqdm>=4.66",
+    "gymnasium>=1.0",
+    "torch>=2.7,<2.11",
+    "tensorboard>=2.16",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "ruff>=0.6",
+]
+
+[tool.uv]
+package = true
+
+# Windows：torch CUDA 轮子走阿里云文件镜像（download.pytorch.org 在本机 TLS 被重置）。
+# 非 Windows：仍走 PyTorch 官方 cu128 index。若网络可直连官方源，可删掉 win32 那条。
+[tool.uv.sources]
+torch = [
+    { url = "https://mirrors.aliyun.com/pytorch-wheels/cu128/torch-2.10.0%2Bcu128-cp311-cp311-win_amd64.whl", marker = "sys_platform == 'win32'" },
+    { index = "pytorch", marker = "sys_platform != 'win32'" },
+]
+
+# 国内直连 PyTorch 官方源较慢时，可停用下方 index 并改用：
+#   uv sync --index-url https://mirrors.aliyun.com/pypi/simple
+# torch 的 cu128 轮子目前仍走官方源（阿里云 pytorch-wheels 不是 PEP 503 结构）。
+# 国内网络：依赖走阿里云 PyPI 镜像；torch 的 CUDA 轮子见 docs/setup.md 的离线安装法
+[[tool.uv.index]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"
+default = true
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rldl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

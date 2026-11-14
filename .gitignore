@@ -1,0 +1,43 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# ---- 虚拟环境 / 工具 ----
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# ---- 实验产物（不入库）----
+outputs/
+runs/
+logs/
+checkpoints/
+wandb/
+*.pth
+*.pt
+*.ckpt
+*.onnx
+*.npz
+*.npy
+*.pkl
+
+# ---- 数据（不入库，放 data/ 本地）----
+data/
+datasets/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
