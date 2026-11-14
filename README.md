@@ -59,7 +59,8 @@ RL_DL/
 │   ├── 02_visual_explain.py  # 生成实验 01 的图解
 │   ├── 03_sampling_ab.py     # 实验 03：有放回 vs 无放回采样
 │   ├── 04_softmax_3class.py  # 实验 04：手写 softmax + 交叉熵（三分类）
-│   └── 05_adam_vs_sgd.py     # 实验 05：SGD / momentum / Adam 对比
+│   ├── 05_adam_vs_sgd.py     # 实验 05：SGD / momentum / Adam 对比
+│   └── 06_optimizer_demo.py  # 最小例子：w² 上逐步对比两种优化器
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
