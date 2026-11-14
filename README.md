@@ -39,24 +39,34 @@ RL_DL/
 ├── pyproject.toml          # 依赖、uv 配置、ruff/pytest 配置
 ├── README.md
 ├── docs/
-│   └── roadmap.md          # 学习路线与阶段验收标准
+│   ├── roadmap.md          # 学习路线与阶段验收标准
+│   ├── setup.md            # 实测环境、镜像原因、复现与回退命令
+│   ├── 01_walkthrough.md   # 实验 01 图解与逐段讲解
+│   ├── 03_sampling_ab.md   # 有放回 vs 无放回采样的对比结论
+│   ├── 04_softmax_3class.md  # 手写 softmax + 交叉熵讲解
+│   └── images/             # 文档用图（由 scripts/02、04 生成）
 ├── configs/                # 后续放实验配置（TOML/YAML）
 ├── src/rldl/
-│   ├── toy.py              # 玩具数据集（two-moons 等）
+│   ├── toy.py              # 玩具数据集（two-moons）
 │   ├── manual_nn.py        # 手写 Linear / ReLU / MLP（只用 Tensor + autograd）
+│   ├── manual_softmax.py   # 手写 softmax / 交叉熵 / 多分类 MLP
+│   ├── softmax_data.py     # 三分类螺旋数据
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
-│   ├── 01_mlp_moons.py       # 实验 01：手写 MLP 训练与评估
-│   ├── 02_visual_explain.py  # 生成实验 01 的三张图解
-│   └── 03_sampling_ab.py     # 实验 03：有放回 vs 无放回采样对比
+│   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
+│   ├── 02_visual_explain.py  # 生成实验 01 的图解
+│   ├── 03_sampling_ab.py     # 实验 03：有放回 vs 无放回采样
+│   └── 04_softmax_3class.py  # 实验 04：手写 softmax + 交叉熵（三分类）
 ├── tests/
-│   └── test_smoke.py       # 环境冒烟测试
+│   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
+│   └── test_softmax.py       # softmax / 交叉熵正确性测试
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
 ## 图解
 
-实验 01 的流程图、网络结构、决策边界见 [docs/01_walkthrough.md](docs/01_walkthrough.md)。
+实验 01 的流程图、网络结构、决策边界见 [docs/01_walkthrough.md](docs/01_walkthrough.md)；
+三分类的手写 softmax 讲解见 [docs/04_softmax_3class.md](docs/04_softmax_3class.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash

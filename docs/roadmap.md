@@ -23,7 +23,7 @@
 - [x] 手写 MLP 前向、BCEWithLogits 损失、反向传播、SGD + momentum 更新
 - [x] 数据集生成与 train/val 划分、固定种子
 - [x] 对比有放回 / 无放回采样，理解 epoch（`scripts/03_sampling_ab.py`）
-- [ ] 手写 softmax + 交叉熵，做三分类玩具数据
+- [x] 手写 softmax + 交叉熵，做三分类玩具数据（`scripts/04_softmax_3class.py`）
 - [ ] 手写 Adam 优化器，与 SGD 对比收敛曲线
 - [ ] 手写数值梯度检查，验证 autograd 结果
 - [ ] 过拟合实验：观察 train/val 曲线分离，加入 weight decay
