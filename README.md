@@ -46,8 +46,9 @@ RL_DL/
 │   ├── manual_nn.py        # 手写 Linear / ReLU / MLP（只用 Tensor + autograd）
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
-│   ├── 01_mlp_moons.py     # 实验 01：手写 MLP 训练与评估
-│   └── 02_visual_explain.py  # 生成实验 01 的三张图解
+│   ├── 01_mlp_moons.py       # 实验 01：手写 MLP 训练与评估
+│   ├── 02_visual_explain.py  # 生成实验 01 的三张图解
+│   └── 03_sampling_ab.py     # 实验 03：有放回 vs 无放回采样对比
 ├── tests/
 │   └── test_smoke.py       # 环境冒烟测试
 └── outputs/                # 实验产物（本地生成，不入库）
