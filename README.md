@@ -46,6 +46,7 @@ RL_DL/
 │   ├── 04_softmax_3class.md  # 手写 softmax + 交叉熵讲解
 │   ├── 05_adam_vs_sgd.md   # 手写 Adam 与 SGD 的对比
 │   ├── 08_numerical_gradient.md  # 数值梯度检查
+│   ├── 09_weight_decay.md  # 过拟合与 weight decay
 │   └── images/             # 文档用图
 ├── configs/                # 后续放实验配置（TOML/YAML）
 ├── src/rldl/
@@ -64,7 +65,8 @@ RL_DL/
 │   ├── 05_adam_vs_sgd.py     # 实验 05：SGD / momentum / Adam 对比
 │   ├── 06_optimizer_demo.py  # 最小例子：w² 上逐步对比两种优化器
 │   ├── 07_adam_step_by_step.py  # 逐步打印 Adam 的每个中间量
-│   └── 08_numerical_gradient.py # 实验 08：数值梯度检查
+│   ├── 08_numerical_gradient.py # 实验 08：数值梯度检查
+│   └── 09_weight_decay.py       # 实验 09：过拟合与 weight decay
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -78,7 +80,8 @@ RL_DL/
 实验 01 的流程图、网络结构、决策边界见 [docs/01_walkthrough.md](docs/01_walkthrough.md)；
 三分类的手写 softmax 讲解见 [docs/04_softmax_3class.md](docs/04_softmax_3class.md)，
 优化器对比见 [docs/05_adam_vs_sgd.md](docs/05_adam_vs_sgd.md)，
-数值梯度检查见 [docs/08_numerical_gradient.md](docs/08_numerical_gradient.md)。
+数值梯度检查见 [docs/08_numerical_gradient.md](docs/08_numerical_gradient.md)，
+过拟合与 weight decay 见 [docs/09_weight_decay.md](docs/09_weight_decay.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
@@ -90,7 +93,7 @@ uv run python scripts/02_visual_explain.py
 见 [docs/roadmap.md](docs/roadmap.md)。当前进度：
 
 - [x] 阶段 0：环境与仓库脚手架
-- [ ] 阶段 1：深度学习基础（张量、autograd、手写 MLP/优化器）
+- [x] 阶段 1：深度学习基础（张量、autograd、手写 MLP/优化器）
 - [ ] 阶段 2：PyTorch 工程化（nn.Module、DataLoader、CNN）
 - [ ] 阶段 3：强化学习基础（bandit、MDP、DP、MC/TD）
 - [ ] 阶段 4：深度强化学习（DQN、REINFORCE、PPO）
