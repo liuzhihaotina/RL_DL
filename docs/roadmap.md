@@ -25,7 +25,7 @@
 - [x] 对比有放回 / 无放回采样，理解 epoch（`scripts/03_sampling_ab.py`）
 - [x] 手写 softmax + 交叉熵，做三分类玩具数据（`scripts/04_softmax_3class.py`）
 - [x] 手写 Adam 优化器，与 SGD 对比收敛曲线（`scripts/05_adam_vs_sgd.py`）
-- [ ] 手写数值梯度检查，验证 autograd 结果
+- [x] 手写数值梯度检查，验证 autograd 结果（`scripts/08_numerical_gradient.py`）
 - [ ] 过拟合实验：观察 train/val 曲线分离，加入 weight decay
 
 验收：`scripts/01_mlp_moons.py` 在 1500 步内 val_acc ≥ 0.95；能解释每个超参的作用。

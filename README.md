@@ -45,13 +45,15 @@ RL_DL/
 │   ├── 03_sampling_ab.md   # 有放回 vs 无放回采样的对比结论
 │   ├── 04_softmax_3class.md  # 手写 softmax + 交叉熵讲解
 │   ├── 05_adam_vs_sgd.md   # 手写 Adam 与 SGD 的对比
-│   └── images/             # 文档用图（由 scripts/02、04 生成）
+│   ├── 08_numerical_gradient.md  # 数值梯度检查
+│   └── images/             # 文档用图
 ├── configs/                # 后续放实验配置（TOML/YAML）
 ├── src/rldl/
 │   ├── toy.py              # 玩具数据集（two-moons）
 │   ├── manual_nn.py        # 手写 Linear / ReLU / MLP（只用 Tensor + autograd）
 │   ├── manual_softmax.py   # 手写 softmax / 交叉熵 / 多分类 MLP
 │   ├── manual_optim.py     # 手写 SGD / momentum / Adam
+│   ├── gradcheck.py        # 数值梯度检查工具
 │   ├── softmax_data.py     # 三分类螺旋数据
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
@@ -60,11 +62,14 @@ RL_DL/
 │   ├── 03_sampling_ab.py     # 实验 03：有放回 vs 无放回采样
 │   ├── 04_softmax_3class.py  # 实验 04：手写 softmax + 交叉熵（三分类）
 │   ├── 05_adam_vs_sgd.py     # 实验 05：SGD / momentum / Adam 对比
-│   └── 06_optimizer_demo.py  # 最小例子：w² 上逐步对比两种优化器
+│   ├── 06_optimizer_demo.py  # 最小例子：w² 上逐步对比两种优化器
+│   ├── 07_adam_step_by_step.py  # 逐步打印 Adam 的每个中间量
+│   └── 08_numerical_gradient.py # 实验 08：数值梯度检查
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
-│   └── test_optim.py         # 手写优化器与 torch.optim 对照
+│   ├── test_optim.py         # 手写优化器与 torch.optim 对照
+│   └── test_gradcheck.py     # 数值梯度与 autograd 对照
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -72,7 +77,8 @@ RL_DL/
 
 实验 01 的流程图、网络结构、决策边界见 [docs/01_walkthrough.md](docs/01_walkthrough.md)；
 三分类的手写 softmax 讲解见 [docs/04_softmax_3class.md](docs/04_softmax_3class.md)，
-优化器对比见 [docs/05_adam_vs_sgd.md](docs/05_adam_vs_sgd.md)。
+优化器对比见 [docs/05_adam_vs_sgd.md](docs/05_adam_vs_sgd.md)，
+数值梯度检查见 [docs/08_numerical_gradient.md](docs/08_numerical_gradient.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
