@@ -54,7 +54,7 @@
 - [x] MDP、贝尔曼方程、策略迭代 / 价值迭代（GridWorld）（`scripts/15_gridworld.py`）
 - [x] 无模型预测：蒙特卡洛、TD(0)、TD(λ)（`scripts/16_mc_td.py`）
 - [x] 无模型控制：SARSA、Q-learning（CliffWalking）（`scripts/17_sarsa_qlearning.py`）
-- [ ] 重要性采样与 off-policy 的概念验证
+- [x] 重要性采样与 off-policy 的概念验证（`scripts/18_importance_sampling.py`）
 
 验收：GridWorld 上策略收敛到最优；能画出价值函数热力图。
 
