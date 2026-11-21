@@ -66,7 +66,7 @@
 
 - [x] DQN + target network + replay buffer（CartPole）（`scripts/19_dqn_cartpole.py`）
 - [x] Double DQN（与普通 DQN 对比，见实验 19）
-- [x] Dueling DQN 消融对比（`scripts/20_dueling_dqn.py`，CartPole 上未超过标准 DQN）
+- [x] Dueling DQN 消融对比（`scripts/20_dueling_dqn.py`；普通与冗余动作版本均未超过标准 DQN，见 docs/20、docs/21）
 - [ ] REINFORCE + baseline（CartPole）
 - [ ] Actor-Critic / A2C
 - [ ] PPO（连续动作：Pendulum 或 LunarLander）

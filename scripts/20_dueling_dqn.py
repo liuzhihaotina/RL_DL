@@ -33,12 +33,20 @@ from rldl.dqn import (  # noqa: E402
     ReplayBuffer,
     epsilon_by_step,
 )
+from rldl.redundant_cartpole import RedundantActionWrapper  # noqa: E402
 from rldl.utils import pick_device, set_seed  # noqa: E402
 
 plt.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DejaVu Sans"]
 plt.rcParams["axes.unicode_minus"] = False
 
 COLORS = {"standard": "#8C8C8C", "dueling": "#4C78A8"}
+
+
+def make_env(args):
+    env = gym.make("CartPole-v1")
+    if args.redundant_actions > 1:
+        env = RedundantActionWrapper(env, args.redundant_actions)
+    return env
 
 
 def select_action(net, state, epsilon, rng, device, n_actions: int) -> int:
@@ -50,8 +58,8 @@ def select_action(net, state, epsilon, rng, device, n_actions: int) -> int:
 
 
 @torch.no_grad()
-def evaluate(net, device, episodes: int = 3, seed: int = 0) -> float:
-    env = gym.make("CartPole-v1")
+def evaluate(net, device, args, episodes: int = 3, seed: int = 0) -> float:
+    env = make_env(args)
     returns = []
     for episode in range(episodes):
         state, _ = env.reset(seed=seed + episode)
@@ -69,7 +77,7 @@ def evaluate(net, device, episodes: int = 3, seed: int = 0) -> float:
 
 def train(arch: str, seed: int, args, device: torch.device) -> dict:
     set_seed(seed)
-    env = gym.make("CartPole-v1")
+    env = make_env(args)
     obs_dim = env.observation_space.shape[0]
     n_actions = env.action_space.n
     rng = np.random.default_rng(seed)
@@ -135,7 +143,7 @@ def train(arch: str, seed: int, args, device: torch.device) -> dict:
         episode_returns.append(total)
 
         if episode % args.eval_every == 0:
-            eval_return = evaluate(policy_net, device, 3, seed=seed + 1000)
+            eval_return = evaluate(policy_net, device, args, 3, seed=seed + 1000)
             eval_episodes.append(episode)
             eval_returns.append(eval_return)
             if eval_return > best_eval:
@@ -177,6 +185,7 @@ def main() -> None:
     p.add_argument("--episodes", type=int, default=400)
     p.add_argument("--seeds", type=int, default=1)
     p.add_argument("--archs", choices=["both", "standard", "dueling"], default="both")
+    p.add_argument("--redundant-actions", type=int, default=1)
     p.add_argument("--max-steps", type=int, default=500)
     p.add_argument("--gamma", type=float, default=0.99)
     p.add_argument("--lr", type=float, default=1e-3)
@@ -247,7 +256,15 @@ def main() -> None:
     axes[1].grid(alpha=0.3)
     axes[1].legend()
 
-    fig.suptitle("Dueling DQN vs 标准 DQN（都用 Double 目标，CartPole）", fontsize=14)
+    action_text = (
+        "2 动作"
+        if args.redundant_actions == 1
+        else f"{args.redundant_actions} 动作（含冗余）"
+    )
+    fig.suptitle(
+        f"Dueling DQN vs 标准 DQN（都用 Double 目标，CartPole，{action_text}）",
+        fontsize=14,
+    )
     fig.tight_layout()
     fig.savefig(args.out / "dueling_vs_standard.png", dpi=160, bbox_inches="tight")
     plt.close(fig)

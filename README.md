@@ -58,6 +58,7 @@ RL_DL/
 │   ├── 18_importance_sampling.md  # 重要性采样
 │   ├── 19_dqn_cartpole.md  # DQN / Double DQN
 │   ├── 20_dueling_dqn.md   # Dueling DQN 对比
+│   ├── 21_redundant_dueling.md  # 冗余动作版 CartPole
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -79,6 +80,7 @@ RL_DL/
 │   ├── control.py          # SARSA / Q-learning
 │   ├── importance.py       # 重要性采样
 │   ├── dqn.py              # Q 网络 / 经验回放 / ε 衰减
+│   ├── redundant_cartpole.py  # 冗余动作 CartPole 包装器
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -115,7 +117,8 @@ RL_DL/
 │   ├── test_cliffwalking.py  # 悬崖环境
 │   ├── test_control.py       # SARSA / Q-learning 基础函数
 │   ├── test_importance.py    # 重要性采样
-│   └── test_dqn.py           # DQN 组件
+│   ├── test_dqn.py           # DQN 组件
+│   └── test_redundant_cartpole.py  # 冗余动作映射
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -136,7 +139,8 @@ MC / TD 见 [docs/16_mc_td.md](docs/16_mc_td.md)，
 SARSA / Q-learning 见 [docs/17_sarsa_qlearning.md](docs/17_sarsa_qlearning.md)，
 重要性采样见 [docs/18_importance_sampling.md](docs/18_importance_sampling.md)，
 DQN 见 [docs/19_dqn_cartpole.md](docs/19_dqn_cartpole.md)，
-Dueling DQN 见 [docs/20_dueling_dqn.md](docs/20_dueling_dqn.md)。
+Dueling DQN 见 [docs/20_dueling_dqn.md](docs/20_dueling_dqn.md)，
+冗余动作实验见 [docs/21_redundant_dueling.md](docs/21_redundant_dueling.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
