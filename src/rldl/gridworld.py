@@ -150,6 +150,34 @@ def policy_evaluation(
     return V, max_iter
 
 
+def policy_evaluation_probs(
+    env: GridWorld,
+    action_probs: np.ndarray,
+    gamma: float,
+    theta: float = 1e-10,
+    max_iter: int = 10000,
+) -> np.ndarray:
+    """随机策略（每状态一个动作分布）的贝尔曼期望方程迭代。"""
+    V = np.zeros(env.n_states)
+    for _ in range(max_iter):
+        delta = 0.0
+        for state in range(env.n_states):
+            if env.is_terminal(state):
+                continue
+            value = 0.0
+            for action in range(env.n_actions):
+                prob_action = action_probs[state, action]
+                if prob_action == 0:
+                    continue
+                for prob, next_state, reward, _ in env.transitions[state][action]:
+                    value += prob_action * prob * (reward + gamma * V[next_state])
+            delta = max(delta, abs(value - V[state]))
+            V[state] = value
+        if delta < theta:
+            break
+    return V
+
+
 def policy_improvement(env: GridWorld, V: np.ndarray, gamma: float) -> np.ndarray:
     """对每个状态选 Q(s,a) 最大的动作（贪心）。"""
     policy = np.zeros(env.n_states, dtype=int)

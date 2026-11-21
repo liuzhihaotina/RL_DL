@@ -53,6 +53,7 @@ RL_DL/
 │   ├── 13_training_tricks.md  # 学习率调度 / 早停 / 裁剪 / AMP
 │   ├── 14_bandit.md        # 多臂老虎机
 │   ├── 15_gridworld.md     # GridWorld / MDP / 动态规划
+│   ├── 16_mc_td.md         # 蒙特卡洛 / TD(0) / TD(λ)
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -69,6 +70,7 @@ RL_DL/
 │   ├── config.py           # TOML 配置加载
 │   ├── bandit.py           # 多臂老虎机环境与策略
 │   ├── gridworld.py        # GridWorld 环境与动态规划
+│   ├── model_free.py       # MC / TD(0) / TD(λ)
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -85,7 +87,8 @@ RL_DL/
 │   ├── 12_mnist_tensorboard.py  # 实验 12：TensorBoard + TOML 配置
 │   ├── 13_training_tricks.py    # 实验 13：训练技巧对比
 │   ├── 14_bandit.py             # 实验 14：多臂老虎机
-│   └── 15_gridworld.py          # 实验 15：GridWorld 动态规划
+│   ├── 15_gridworld.py          # 实验 15：GridWorld 动态规划
+│   └── 16_mc_td.py              # 实验 16：MC / TD 预测
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -95,7 +98,8 @@ RL_DL/
 │   ├── test_mnist.py         # MNIST 解析 / Dataset / CNN
 │   ├── test_config.py        # TOML 配置加载
 │   ├── test_bandit.py        # 老虎机环境与策略
-│   └── test_gridworld.py     # GridWorld 与动态规划
+│   ├── test_gridworld.py     # GridWorld 与动态规划
+│   └── test_model_free.py    # MC / TD 公式
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -111,7 +115,8 @@ MNIST CNN 见 [docs/11_mnist_cnn.md](docs/11_mnist_cnn.md)，
 TensorBoard 与配置见 [docs/12_tensorboard_config.md](docs/12_tensorboard_config.md)，
 训练技巧见 [docs/13_training_tricks.md](docs/13_training_tricks.md)，
 多臂老虎机见 [docs/14_bandit.md](docs/14_bandit.md)，
-GridWorld 见 [docs/15_gridworld.md](docs/15_gridworld.md)。
+GridWorld 见 [docs/15_gridworld.md](docs/15_gridworld.md)，
+MC / TD 见 [docs/16_mc_td.md](docs/16_mc_td.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash

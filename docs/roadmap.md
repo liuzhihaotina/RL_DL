@@ -52,7 +52,7 @@
 
 - [x] 多臂老虎机：ε-greedy、UCB、Thompson sampling（`scripts/14_bandit.py`）
 - [x] MDP、贝尔曼方程、策略迭代 / 价值迭代（GridWorld）（`scripts/15_gridworld.py`）
-- [ ] 无模型预测：蒙特卡洛、TD(0)、TD(λ)
+- [x] 无模型预测：蒙特卡洛、TD(0)、TD(λ)（`scripts/16_mc_td.py`）
 - [ ] 无模型控制：SARSA、Q-learning（FrozenLake / CliffWalking）
 - [ ] 重要性采样与 off-policy 的概念验证
 
