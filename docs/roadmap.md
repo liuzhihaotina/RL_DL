@@ -51,7 +51,7 @@
 目标：不依赖库，手写 RL 的核心循环。
 
 - [x] 多臂老虎机：ε-greedy、UCB、Thompson sampling（`scripts/14_bandit.py`）
-- [ ] MDP、贝尔曼方程、策略迭代 / 价值迭代（GridWorld）
+- [x] MDP、贝尔曼方程、策略迭代 / 价值迭代（GridWorld）（`scripts/15_gridworld.py`）
 - [ ] 无模型预测：蒙特卡洛、TD(0)、TD(λ)
 - [ ] 无模型控制：SARSA、Q-learning（FrozenLake / CliffWalking）
 - [ ] 重要性采样与 off-policy 的概念验证
