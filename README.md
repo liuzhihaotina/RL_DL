@@ -47,6 +47,7 @@ RL_DL/
 │   ├── 05_adam_vs_sgd.md   # 手写 Adam 与 SGD 的对比
 │   ├── 08_numerical_gradient.md  # 数值梯度检查
 │   ├── 09_weight_decay.md  # 过拟合与 weight decay
+│   ├── 10_nn_module_rewrite.md  # nn.Module / DataLoader 重写实验 01
 │   └── images/             # 文档用图
 ├── configs/                # 后续放实验配置（TOML/YAML）
 ├── src/rldl/
@@ -56,6 +57,8 @@ RL_DL/
 │   ├── manual_optim.py     # 手写 SGD / momentum / Adam
 │   ├── gradcheck.py        # 数值梯度检查工具
 │   ├── softmax_data.py     # 三分类螺旋数据
+│   ├── nn_models.py        # nn.Module 版 MLP
+│   ├── nn_data.py          # 自定义 Dataset
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -66,12 +69,14 @@ RL_DL/
 │   ├── 06_optimizer_demo.py  # 最小例子：w² 上逐步对比两种优化器
 │   ├── 07_adam_step_by_step.py  # 逐步打印 Adam 的每个中间量
 │   ├── 08_numerical_gradient.py # 实验 08：数值梯度检查
-│   └── 09_weight_decay.py       # 实验 09：过拟合与 weight decay
+│   ├── 09_weight_decay.py       # 实验 09：过拟合与 weight decay
+│   └── 10_nn_module_mlp.py      # 实验 10：标准的 nn.Module + DataLoader 写法
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
 │   ├── test_optim.py         # 手写优化器与 torch.optim 对照
-│   └── test_gradcheck.py     # 数值梯度与 autograd 对照
+│   ├── test_gradcheck.py     # 数值梯度与 autograd 对照
+│   └── test_nn_basics.py     # nn.Module / Dataset / DataLoader
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -81,7 +86,8 @@ RL_DL/
 三分类的手写 softmax 讲解见 [docs/04_softmax_3class.md](docs/04_softmax_3class.md)，
 优化器对比见 [docs/05_adam_vs_sgd.md](docs/05_adam_vs_sgd.md)，
 数值梯度检查见 [docs/08_numerical_gradient.md](docs/08_numerical_gradient.md)，
-过拟合与 weight decay 见 [docs/09_weight_decay.md](docs/09_weight_decay.md)。
+过拟合与 weight decay 见 [docs/09_weight_decay.md](docs/09_weight_decay.md)，
+标准写法重写实验 01 见 [docs/10_nn_module_rewrite.md](docs/10_nn_module_rewrite.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
