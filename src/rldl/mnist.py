@@ -108,7 +108,7 @@ class MNISTDataset(Dataset):
     def __init__(self, images: np.ndarray, labels: np.ndarray) -> None:
         self.images = torch.from_numpy(images.copy()).float().unsqueeze(1)
         self.images = (self.images / 255.0 - MEAN) / STD
-        self.labels = torch.from_numpy(labels).long()
+        self.labels = torch.from_numpy(labels.copy()).long()
 
     def __len__(self) -> int:
         return len(self.images)

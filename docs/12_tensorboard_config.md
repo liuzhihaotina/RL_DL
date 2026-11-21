@@ -165,6 +165,35 @@ uv run python scripts/12_mnist_tensorboard.py --run-dir runs/mnist_lr3e-3 --lr 3
 
 TensorBoard 启动后，把 `runs/` 作为根目录，左侧会自动列出所有子 run，可以勾选多个一起比较。
 
+### 常见问题
+
+**1. `TensorFlow installation not found - running with reduced feature set`**
+
+这是正常提示。TensorBoard 不需要装 TensorFlow 也能读 PyTorch 写的事件文件，忽略即可。
+
+**2. `error: argument {serve}: invalid choice: 'run'`**
+
+命令被重复粘贴成了：
+
+```text
+uv run tensorboard --logdir runsuv run tensorboard --logdir runs
+```
+
+`--logdir` 把后面的 `runsuv run ...` 全当成了目录名，于是 `run` 被当成子命令。
+确保命令单独一行、只执行一次：
+
+```powershell
+uv run tensorboard --logdir runs
+```
+
+**3. 6006 端口被占用**
+
+换一个端口：
+
+```powershell
+uv run tensorboard --logdir runs --port 6007
+```
+
 ---
 
 ## 6. 为什么值得这么做
