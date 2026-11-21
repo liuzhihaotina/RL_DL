@@ -51,6 +51,7 @@ RL_DL/
 │   ├── 11_mnist_cnn.md     # MNIST 手写数字 CNN
 │   ├── 12_tensorboard_config.md  # TensorBoard 与 TOML 配置
 │   ├── 13_training_tricks.md  # 学习率调度 / 早停 / 裁剪 / AMP
+│   ├── 14_bandit.md        # 多臂老虎机
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -65,6 +66,7 @@ RL_DL/
 │   ├── cnn.py              # MNIST 用的小型 CNN
 │   ├── mnist.py            # MNIST 下载、解析、Dataset
 │   ├── config.py           # TOML 配置加载
+│   ├── bandit.py           # 多臂老虎机环境与策略
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -79,7 +81,8 @@ RL_DL/
 │   ├── 10_nn_module_mlp.py      # 实验 10：标准的 nn.Module + DataLoader 写法
 │   ├── 11_mnist_cnn.py          # 实验 11：MNIST CNN
 │   ├── 12_mnist_tensorboard.py  # 实验 12：TensorBoard + TOML 配置
-│   └── 13_training_tricks.py    # 实验 13：训练技巧对比
+│   ├── 13_training_tricks.py    # 实验 13：训练技巧对比
+│   └── 14_bandit.py             # 实验 14：多臂老虎机
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -87,7 +90,8 @@ RL_DL/
 │   ├── test_gradcheck.py     # 数值梯度与 autograd 对照
 │   ├── test_nn_basics.py     # nn.Module / Dataset / DataLoader
 │   ├── test_mnist.py         # MNIST 解析 / Dataset / CNN
-│   └── test_config.py        # TOML 配置加载
+│   ├── test_config.py        # TOML 配置加载
+│   └── test_bandit.py        # 老虎机环境与策略
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -101,7 +105,8 @@ RL_DL/
 标准写法重写实验 01 见 [docs/10_nn_module_rewrite.md](docs/10_nn_module_rewrite.md)，
 MNIST CNN 见 [docs/11_mnist_cnn.md](docs/11_mnist_cnn.md)，
 TensorBoard 与配置见 [docs/12_tensorboard_config.md](docs/12_tensorboard_config.md)，
-训练技巧见 [docs/13_training_tricks.md](docs/13_training_tricks.md)。
+训练技巧见 [docs/13_training_tricks.md](docs/13_training_tricks.md)，
+多臂老虎机见 [docs/14_bandit.md](docs/14_bandit.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
