@@ -38,7 +38,7 @@
 
 - [x] `nn.Module` / `Dataset` / `DataLoader` 重写实验 01（`scripts/10_nn_module_mlp.py`）
 - [x] MNIST：手写 CNN（conv/pool/BN/dropout），训练到 test_acc ≥ 0.99（`scripts/11_mnist_cnn.py`，0.9909）
-- [ ] 训练技巧：学习率调度、早停、梯度裁剪、混合精度（AMP）
+- [x] 训练技巧：学习率调度、早停、梯度裁剪、混合精度（AMP）（`scripts/13_training_tricks.py`）
 - [x] TensorBoard 记录 loss/acc/学习率/权重直方图（`scripts/12_mnist_tensorboard.py`）
 - [x] 实验配置化：`configs/*.toml`，命令行可覆盖
 

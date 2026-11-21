@@ -50,6 +50,7 @@ RL_DL/
 │   ├── 10_nn_module_rewrite.md  # nn.Module / DataLoader 重写实验 01
 │   ├── 11_mnist_cnn.md     # MNIST 手写数字 CNN
 │   ├── 12_tensorboard_config.md  # TensorBoard 与 TOML 配置
+│   ├── 13_training_tricks.md  # 学习率调度 / 早停 / 裁剪 / AMP
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -77,7 +78,8 @@ RL_DL/
 │   ├── 09_weight_decay.py       # 实验 09：过拟合与 weight decay
 │   ├── 10_nn_module_mlp.py      # 实验 10：标准的 nn.Module + DataLoader 写法
 │   ├── 11_mnist_cnn.py          # 实验 11：MNIST CNN
-│   └── 12_mnist_tensorboard.py  # 实验 12：TensorBoard + TOML 配置
+│   ├── 12_mnist_tensorboard.py  # 实验 12：TensorBoard + TOML 配置
+│   └── 13_training_tricks.py    # 实验 13：训练技巧对比
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -98,7 +100,8 @@ RL_DL/
 过拟合与 weight decay 见 [docs/09_weight_decay.md](docs/09_weight_decay.md)，
 标准写法重写实验 01 见 [docs/10_nn_module_rewrite.md](docs/10_nn_module_rewrite.md)，
 MNIST CNN 见 [docs/11_mnist_cnn.md](docs/11_mnist_cnn.md)，
-TensorBoard 与配置见 [docs/12_tensorboard_config.md](docs/12_tensorboard_config.md)。
+TensorBoard 与配置见 [docs/12_tensorboard_config.md](docs/12_tensorboard_config.md)，
+训练技巧见 [docs/13_training_tricks.md](docs/13_training_tricks.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
@@ -111,7 +114,7 @@ uv run python scripts/02_visual_explain.py
 
 - [x] 阶段 0：环境与仓库脚手架
 - [x] 阶段 1：深度学习基础（张量、autograd、手写 MLP/优化器）
-- [ ] 阶段 2：PyTorch 工程化（nn.Module、DataLoader、CNN）
+- [x] 阶段 2：PyTorch 工程化（nn.Module、DataLoader、CNN）
 - [ ] 阶段 3：强化学习基础（bandit、MDP、DP、MC/TD）
 - [ ] 阶段 4：深度强化学习（DQN、REINFORCE、PPO）
 - [ ] 阶段 5：综合项目
