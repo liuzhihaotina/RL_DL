@@ -9,7 +9,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from rldl.dqn import QNetwork, ReplayBuffer, epsilon_by_step
+from rldl.dqn import DuelingQNetwork, QNetwork, ReplayBuffer, epsilon_by_step
 
 
 def test_qnetwork_forward_shape() -> None:
@@ -51,3 +51,17 @@ def test_epsilon_schedule() -> None:
     assert epsilon_by_step(50, 1.0, 0.05, 100) == pytest.approx(0.525)
     assert epsilon_by_step(100, 1.0, 0.05, 100) == pytest.approx(0.05)
     assert epsilon_by_step(200, 1.0, 0.05, 100) == pytest.approx(0.05)
+
+
+
+def test_dueling_network_formula() -> None:
+    net = DuelingQNetwork(obs_dim=4, n_actions=3, hidden=32)
+    x = torch.randn(8, 4)
+    q = net.forward(x)
+    assert q.shape == (8, 3)
+
+    features = net.feature(x)
+    value = net.value(features)
+    advantage = net.advantage(features)
+    expected = value + advantage - advantage.mean(dim=1, keepdim=True)
+    assert torch.allclose(q, expected)

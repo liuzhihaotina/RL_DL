@@ -57,6 +57,7 @@ RL_DL/
 │   ├── 17_sarsa_qlearning.md  # SARSA 与 Q-learning
 │   ├── 18_importance_sampling.md  # 重要性采样
 │   ├── 19_dqn_cartpole.md  # DQN / Double DQN
+│   ├── 20_dueling_dqn.md   # Dueling DQN 对比
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -98,7 +99,8 @@ RL_DL/
 │   ├── 16_mc_td.py              # 实验 16：MC / TD 预测
 │   ├── 17_sarsa_qlearning.py    # 实验 17：SARSA vs Q-learning
 │   ├── 18_importance_sampling.py  # 实验 18：重要性采样
-│   └── 19_dqn_cartpole.py        # 实验 19：DQN / Double DQN
+│   ├── 19_dqn_cartpole.py        # 实验 19：DQN / Double DQN
+│   └── 20_dueling_dqn.py         # 实验 20：Dueling DQN vs 标准 DQN
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -133,7 +135,8 @@ GridWorld 见 [docs/15_gridworld.md](docs/15_gridworld.md)，
 MC / TD 见 [docs/16_mc_td.md](docs/16_mc_td.md)，
 SARSA / Q-learning 见 [docs/17_sarsa_qlearning.md](docs/17_sarsa_qlearning.md)，
 重要性采样见 [docs/18_importance_sampling.md](docs/18_importance_sampling.md)，
-DQN 见 [docs/19_dqn_cartpole.md](docs/19_dqn_cartpole.md)。
+DQN 见 [docs/19_dqn_cartpole.md](docs/19_dqn_cartpole.md)，
+Dueling DQN 见 [docs/20_dueling_dqn.md](docs/20_dueling_dqn.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash

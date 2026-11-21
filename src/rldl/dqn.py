@@ -67,6 +67,31 @@ class ReplayBuffer:
         }
 
 
+class DuelingQNetwork(nn.Module):
+    """Dueling 结构：Q(s,a) = V(s) + A(s,a) - mean_a A(s,a)。
+
+    减去优势的均值是为了让 V 和 A 的分解唯一（否则同时给 V 加常数、
+    给 A 减常数，Q 不变）。
+    """
+
+    def __init__(self, obs_dim: int, n_actions: int, hidden: int = 128) -> None:
+        super().__init__()
+        self.feature = nn.Sequential(
+            nn.Linear(obs_dim, hidden),
+            nn.ReLU(),
+            nn.Linear(hidden, hidden),
+            nn.ReLU(),
+        )
+        self.value = nn.Linear(hidden, 1)
+        self.advantage = nn.Linear(hidden, n_actions)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        features = self.feature(x)
+        value = self.value(features)
+        advantage = self.advantage(features)
+        return value + advantage - advantage.mean(dim=1, keepdim=True)
+
+
 def epsilon_by_step(step: int, start: float, end: float, decay_steps: int) -> float:
     """线性衰减：step=0 时 start，step>=decay_steps 时 end。"""
     if decay_steps <= 0:
