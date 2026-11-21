@@ -48,6 +48,7 @@ RL_DL/
 │   ├── 08_numerical_gradient.md  # 数值梯度检查
 │   ├── 09_weight_decay.md  # 过拟合与 weight decay
 │   ├── 10_nn_module_rewrite.md  # nn.Module / DataLoader 重写实验 01
+│   ├── 11_mnist_cnn.md     # MNIST 手写数字 CNN
 │   └── images/             # 文档用图
 ├── configs/                # 后续放实验配置（TOML/YAML）
 ├── src/rldl/
@@ -59,6 +60,8 @@ RL_DL/
 │   ├── softmax_data.py     # 三分类螺旋数据
 │   ├── nn_models.py        # nn.Module 版 MLP
 │   ├── nn_data.py          # 自定义 Dataset
+│   ├── cnn.py              # MNIST 用的小型 CNN
+│   ├── mnist.py            # MNIST 下载、解析、Dataset
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -70,13 +73,15 @@ RL_DL/
 │   ├── 07_adam_step_by_step.py  # 逐步打印 Adam 的每个中间量
 │   ├── 08_numerical_gradient.py # 实验 08：数值梯度检查
 │   ├── 09_weight_decay.py       # 实验 09：过拟合与 weight decay
-│   └── 10_nn_module_mlp.py      # 实验 10：标准的 nn.Module + DataLoader 写法
+│   ├── 10_nn_module_mlp.py      # 实验 10：标准的 nn.Module + DataLoader 写法
+│   └── 11_mnist_cnn.py          # 实验 11：MNIST CNN
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
 │   ├── test_optim.py         # 手写优化器与 torch.optim 对照
 │   ├── test_gradcheck.py     # 数值梯度与 autograd 对照
-│   └── test_nn_basics.py     # nn.Module / Dataset / DataLoader
+│   ├── test_nn_basics.py     # nn.Module / Dataset / DataLoader
+│   └── test_mnist.py         # MNIST 解析 / Dataset / CNN
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -87,7 +92,8 @@ RL_DL/
 优化器对比见 [docs/05_adam_vs_sgd.md](docs/05_adam_vs_sgd.md)，
 数值梯度检查见 [docs/08_numerical_gradient.md](docs/08_numerical_gradient.md)，
 过拟合与 weight decay 见 [docs/09_weight_decay.md](docs/09_weight_decay.md)，
-标准写法重写实验 01 见 [docs/10_nn_module_rewrite.md](docs/10_nn_module_rewrite.md)。
+标准写法重写实验 01 见 [docs/10_nn_module_rewrite.md](docs/10_nn_module_rewrite.md)，
+MNIST CNN 见 [docs/11_mnist_cnn.md](docs/11_mnist_cnn.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash

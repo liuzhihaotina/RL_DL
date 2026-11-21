@@ -37,7 +37,7 @@
 目标：从「教学代码」过渡到「能长期迭代的工程」。
 
 - [x] `nn.Module` / `Dataset` / `DataLoader` 重写实验 01（`scripts/10_nn_module_mlp.py`）
-- [ ] MNIST：手写 CNN（conv/pool/BN/dropout），训练到 test_acc ≥ 0.99
+- [x] MNIST：手写 CNN（conv/pool/BN/dropout），训练到 test_acc ≥ 0.99（`scripts/11_mnist_cnn.py`，0.9909）
 - [ ] 训练技巧：学习率调度、早停、梯度裁剪、混合精度（AMP）
 - [ ] TensorBoard 记录 loss/acc/学习率/权重直方图
 - [ ] 实验配置化：`configs/*.toml`，命令行可覆盖
