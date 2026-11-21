@@ -64,8 +64,9 @@
 
 目标：在 gymnasium 环境中实现并对比深度 RL 算法。
 
-- [ ] DQN + target network + replay buffer（CartPole）
-- [ ] Double DQN / Dueling DQN 消融对比
+- [x] DQN + target network + replay buffer（CartPole）（`scripts/19_dqn_cartpole.py`）
+- [x] Double DQN（与普通 DQN 对比，见实验 19）
+- [ ] Dueling DQN 消融对比
 - [ ] REINFORCE + baseline（CartPole）
 - [ ] Actor-Critic / A2C
 - [ ] PPO（连续动作：Pendulum 或 LunarLander）
