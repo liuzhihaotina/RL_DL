@@ -49,8 +49,9 @@ RL_DL/
 │   ├── 09_weight_decay.md  # 过拟合与 weight decay
 │   ├── 10_nn_module_rewrite.md  # nn.Module / DataLoader 重写实验 01
 │   ├── 11_mnist_cnn.md     # MNIST 手写数字 CNN
+│   ├── 12_tensorboard_config.md  # TensorBoard 与 TOML 配置
 │   └── images/             # 文档用图
-├── configs/                # 后续放实验配置（TOML/YAML）
+├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
 │   ├── toy.py              # 玩具数据集（two-moons）
 │   ├── manual_nn.py        # 手写 Linear / ReLU / MLP（只用 Tensor + autograd）
@@ -62,6 +63,7 @@ RL_DL/
 │   ├── nn_data.py          # 自定义 Dataset
 │   ├── cnn.py              # MNIST 用的小型 CNN
 │   ├── mnist.py            # MNIST 下载、解析、Dataset
+│   ├── config.py           # TOML 配置加载
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -74,14 +76,16 @@ RL_DL/
 │   ├── 08_numerical_gradient.py # 实验 08：数值梯度检查
 │   ├── 09_weight_decay.py       # 实验 09：过拟合与 weight decay
 │   ├── 10_nn_module_mlp.py      # 实验 10：标准的 nn.Module + DataLoader 写法
-│   └── 11_mnist_cnn.py          # 实验 11：MNIST CNN
+│   ├── 11_mnist_cnn.py          # 实验 11：MNIST CNN
+│   └── 12_mnist_tensorboard.py  # 实验 12：TensorBoard + TOML 配置
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
 │   ├── test_optim.py         # 手写优化器与 torch.optim 对照
 │   ├── test_gradcheck.py     # 数值梯度与 autograd 对照
 │   ├── test_nn_basics.py     # nn.Module / Dataset / DataLoader
-│   └── test_mnist.py         # MNIST 解析 / Dataset / CNN
+│   ├── test_mnist.py         # MNIST 解析 / Dataset / CNN
+│   └── test_config.py        # TOML 配置加载
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -93,7 +97,8 @@ RL_DL/
 数值梯度检查见 [docs/08_numerical_gradient.md](docs/08_numerical_gradient.md)，
 过拟合与 weight decay 见 [docs/09_weight_decay.md](docs/09_weight_decay.md)，
 标准写法重写实验 01 见 [docs/10_nn_module_rewrite.md](docs/10_nn_module_rewrite.md)，
-MNIST CNN 见 [docs/11_mnist_cnn.md](docs/11_mnist_cnn.md)。
+MNIST CNN 见 [docs/11_mnist_cnn.md](docs/11_mnist_cnn.md)，
+TensorBoard 与配置见 [docs/12_tensorboard_config.md](docs/12_tensorboard_config.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash

@@ -1,17 +1,12 @@
-# 实验配置目录
+# 实验配置
 
-后续把可复用的实验超参写成 TOML，例如：
+- `mnist_cnn.toml`：实验 12 的 MNIST CNN 配置。
 
-```toml
-# configs/dqn_cartpole.toml
-[env]
-id = "CartPole-v1"
+优先级：**命令行参数 > TOML 文件 > 代码默认值**。
 
-[train]
-total_steps = 100_000
-lr = 2.5e-4
-gamma = 0.99
-batch_size = 64
+示例：
+
+```bash
+uv run python scripts/12_mnist_tensorboard.py
+uv run python scripts/12_mnist_tensorboard.py --epochs 3 --lr 3e-3
 ```
-
-脚本通过 `--config configs/xxx.toml` 读取，命令行参数优先覆盖。

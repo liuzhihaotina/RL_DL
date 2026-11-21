@@ -1,0 +1,14 @@
+[data]
+root = "data/mnist"
+batch_size = 128
+limit_train = 0
+
+[train]
+epochs = 5
+lr = 0.001
+seed = 0
+device = "auto"
+
+[output]
+out = "outputs/12_mnist_tensorboard"
+run_dir = "runs/mnist_cnn"
