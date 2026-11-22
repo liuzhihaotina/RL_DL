@@ -2,6 +2,8 @@
 
 从零学习深度学习与强化学习：手写模型和训练循环，逐步实现 RL 算法，而不是只调库。
 
+> 当前进度、全部实验清单和结果见 **[docs/PROGRESS.md](docs/PROGRESS.md)**。
+
 ## 环境
 
 | 项 | 值 |
@@ -39,6 +41,7 @@ RL_DL/
 ├── pyproject.toml          # 依赖、uv 配置、ruff/pytest 配置
 ├── README.md
 ├── docs/
+│   ├── PROGRESS.md         # 单一进展文档：阶段、实验清单、结果
 │   ├── roadmap.md          # 学习路线与阶段验收标准
 │   ├── setup.md            # 实测环境、镜像原因、复现与回退命令
 │   ├── 01_walkthrough.md   # 实验 01 图解与逐段讲解
