@@ -25,11 +25,18 @@ from gymnasium import spaces
 class PointMassEnv(gym.Env):
     metadata = {"render_modes": []}
 
-    def __init__(self, max_steps: int = 100, dt: float = 0.1, damping: float = 0.9) -> None:
+    def __init__(
+        self,
+        max_steps: int = 100,
+        dt: float = 0.1,
+        damping: float = 0.9,
+        bounds: float | None = None,
+    ) -> None:
         super().__init__()
         self.max_steps = max_steps
         self.dt = dt
         self.damping = damping
+        self.bounds = bounds
 
         self.observation_space = spaces.Box(
             low=-np.inf, high=np.inf, shape=(4,), dtype=np.float32
@@ -54,6 +61,10 @@ class PointMassEnv(gym.Env):
         action = np.clip(np.asarray(action, dtype=np.float32).reshape(2), -1.0, 1.0)
         self.vel = self.damping * self.vel + self.dt * action
         self.pos = self.pos + self.vel
+        if self.bounds is not None:
+            outside = np.abs(self.pos) > self.bounds
+            self.pos = np.clip(self.pos, -self.bounds, self.bounds)
+            self.vel[outside] = 0.0
         self.steps += 1
 
         distance = float(np.linalg.norm(self.pos))

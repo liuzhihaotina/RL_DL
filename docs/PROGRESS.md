@@ -12,7 +12,7 @@
 | 2 | PyTorch 工程化 | ✅ | nn.Module / DataLoader / MNIST CNN / TensorBoard / AMP |
 | 3 | 强化学习基础 | ✅ | bandit / MDP / DP / MC-TD / SARSA-Q / 重要性采样 |
 | 4 | 深度强化学习 | ✅ | DQN / Double / Dueling / REINFORCE / A2C / PPO |
-| 5 | 综合项目 | 🔧 | 连续动作 PPO + 自建环境已跑通；下一步多 seed 报告 |
+| 5 | 综合项目 | 🔧 | 连续动作 PPO + 自建环境 + 视觉输入已跑通；下一步多 seed 报告 |
 
 ---
 
@@ -71,6 +71,7 @@
 | 25 | Pendulum 连续动作入门 | 随机 -876.5，零扭矩 -680.0，手调 PD -0.4；确认连续动作接口 |
 | 26 | 连续动作 PPO（Pendulum） | 110k 步，best eval -83.7；σ 从 0.95 降到 0.68 |
 | 27 | 自建 PointMass 环境 + PPO | 31k 步，best eval -1.5；四个起点都收敛到原点 |
+| 28 | 视觉 PointMass + CNN PPO | 21.5k 步，best eval -9；从 32×32 像素学习控制 |
 
 ## 方法论总结
 

@@ -68,6 +68,7 @@ RL_DL/
 │   ├── 25_pendulum_intro.md  # Pendulum 连续动作入门
 │   ├── 26_ppo_pendulum.md   # 连续动作 PPO
 │   ├── 27_ppo_pointmass.md  # 自建 PointMass 环境
+│   ├── 28_ppo_visual_pointmass.md  # 视觉输入 CNN + PPO
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -93,6 +94,8 @@ RL_DL/
 │   ├── policy_gradient.py    # 策略网络 / Value baseline / REINFORCE 损失
 │   ├── ppo.py                # GAE
 │   ├── pointmass.py          # 自建 PointMass 环境
+│   ├── pointmass_visual.py   # 像素版 PointMass
+│   ├── visual_policy.py      # CNN actor-critic
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -120,7 +123,8 @@ RL_DL/
 │   ├── 24_ppo_cartpole.py           # 实验 24：PPO
 │   ├── 25_pendulum_intro.py         # 实验 25：Pendulum 入门
 │   ├── 26_ppo_pendulum.py           # 实验 26：连续动作 PPO
-│   └── 27_ppo_pointmass.py          # 实验 27：自建环境 + PPO
+│   ├── 27_ppo_pointmass.py          # 实验 27：自建环境 + PPO
+│   └── 28_ppo_visual_pointmass.py   # 实验 28：视觉输入
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -139,7 +143,8 @@ RL_DL/
 │   ├── test_redundant_cartpole.py  # 冗余动作映射
 │   ├── test_policy_gradient.py     # 策略梯度组件
 │   ├── test_ppo.py                 # GAE
-│   └── test_pointmass.py           # 自建环境
+│   ├── test_pointmass.py           # 自建环境
+│   └── test_pointmass_visual.py    # 像素环境与 CNN
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -167,7 +172,8 @@ Actor-Critic 见 [docs/23_actor_critic_cartpole.md](docs/23_actor_critic_cartpol
 PPO 见 [docs/24_ppo_cartpole.md](docs/24_ppo_cartpole.md)，
 Pendulum 入门见 [docs/25_pendulum_intro.md](docs/25_pendulum_intro.md)，
 连续动作 PPO 见 [docs/26_ppo_pendulum.md](docs/26_ppo_pendulum.md)，
-自建环境见 [docs/27_ppo_pointmass.md](docs/27_ppo_pointmass.md)。
+自建环境见 [docs/27_ppo_pointmass.md](docs/27_ppo_pointmass.md)，
+视觉输入见 [docs/28_ppo_visual_pointmass.md](docs/28_ppo_visual_pointmass.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash

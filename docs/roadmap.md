@@ -86,7 +86,7 @@
 
 - [ ] 从零复现一篇 RL 论文的核心实验
 - [x] 自建环境（自定义 gymnasium Env）+ 训练 + 可视化（`scripts/27_ppo_pointmass.py`）
-- [ ] 把视觉输入（CNN）接入 RL（如 CartPole 像素版 / Atari 单游戏）
+- [x] 把视觉输入（CNN）接入 RL（PointMass 像素版，`scripts/28_ppo_visual_pointmass.py`）
 
 验收：README 写清方法、超参、结果与失败尝试；他人可按文档复现。
 
