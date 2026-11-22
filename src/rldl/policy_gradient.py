@@ -83,3 +83,40 @@ def reinforce_loss(
     if entropy is not None and entropy_coef > 0:
         loss = loss - entropy_coef * torch.stack(entropy).mean()
     return loss
+
+
+
+def n_step_returns(
+    rewards: np.ndarray,
+    values: np.ndarray,
+    dones: np.ndarray,
+    gamma: float,
+    n: int,
+) -> np.ndarray:
+    """n 步自举回报：前 n 步用真实奖励，之后用 V(s_{t+n}) 自举。
+
+    如果窗口内遇到终止，就不再加 bootstrap。
+    """
+    rewards = np.asarray(rewards, dtype=np.float32)
+    values = np.asarray(values, dtype=np.float32)
+    dones = np.asarray(dones, dtype=bool)
+    length = len(rewards)
+    out = np.zeros(length, dtype=np.float32)
+
+    for t in range(length):
+        total = 0.0
+        discount = 1.0
+        bootstrapped = False
+        for k in range(n):
+            if t + k >= length:
+                break
+            total += discount * rewards[t + k]
+            discount *= gamma
+            if dones[t + k]:
+                bootstrapped = True
+                break
+        if not bootstrapped and t + n < length:
+            total += discount * values[t + n]
+        out[t] = total
+
+    return out

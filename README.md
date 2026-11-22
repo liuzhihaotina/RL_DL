@@ -60,6 +60,7 @@ RL_DL/
 │   ├── 20_dueling_dqn.md   # Dueling DQN 对比
 │   ├── 21_redundant_dueling.md  # 冗余动作版 CartPole
 │   ├── 22_reinforce_cartpole.md  # REINFORCE + baseline
+│   ├── 23_actor_critic_cartpole.md  # Actor-Critic（A2C）
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -105,7 +106,8 @@ RL_DL/
 │   ├── 18_importance_sampling.py  # 实验 18：重要性采样
 │   ├── 19_dqn_cartpole.py        # 实验 19：DQN / Double DQN
 │   ├── 20_dueling_dqn.py         # 实验 20：Dueling DQN vs 标准 DQN
-│   └── 22_reinforce_cartpole.py  # 实验 22：REINFORCE + baseline
+│   ├── 22_reinforce_cartpole.py  # 实验 22：REINFORCE + baseline
+│   └── 23_actor_critic_cartpole.py  # 实验 23：Actor-Critic
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -145,7 +147,8 @@ SARSA / Q-learning 见 [docs/17_sarsa_qlearning.md](docs/17_sarsa_qlearning.md)�
 DQN 见 [docs/19_dqn_cartpole.md](docs/19_dqn_cartpole.md)，
 Dueling DQN 见 [docs/20_dueling_dqn.md](docs/20_dueling_dqn.md)，
 冗余动作实验见 [docs/21_redundant_dueling.md](docs/21_redundant_dueling.md)，
-REINFORCE 见 [docs/22_reinforce_cartpole.md](docs/22_reinforce_cartpole.md)。
+REINFORCE 见 [docs/22_reinforce_cartpole.md](docs/22_reinforce_cartpole.md)，
+Actor-Critic 见 [docs/23_actor_critic_cartpole.md](docs/23_actor_critic_cartpole.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash

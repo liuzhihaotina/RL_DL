@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
@@ -12,6 +13,7 @@ from rldl.policy_gradient import (
     PolicyNetwork,
     ValueNetwork,
     compute_returns,
+    n_step_returns,
     reinforce_loss,
 )
 
@@ -57,3 +59,25 @@ def test_entropy_bonus_reduces_loss() -> None:
         log_probs, returns, entropy=entropy, normalize=False, entropy_coef=0.1
     )
     assert with_bonus.item() < without.item()
+
+
+
+def test_n_step_returns_with_bootstrap() -> None:
+    rewards = np.array([1.0, 1.0, 1.0], dtype=np.float32)
+    values = np.array([10.0, 10.0, 10.0], dtype=np.float32)
+    dones = np.array([False, False, False])
+    returns = n_step_returns(rewards, values, dones, gamma=0.5, n=2)
+
+    assert returns[0] == pytest.approx(1.0 + 0.5 * 1.0 + 0.25 * 10.0)
+    assert returns[1] == pytest.approx(1.0 + 0.5 * 1.0)
+    assert returns[2] == pytest.approx(1.0)
+
+
+def test_n_step_returns_stops_at_terminal() -> None:
+    rewards = np.array([1.0, 1.0], dtype=np.float32)
+    values = np.array([10.0, 10.0], dtype=np.float32)
+    dones = np.array([False, True])
+    returns = n_step_returns(rewards, values, dones, gamma=0.5, n=2)
+
+    assert returns[0] == pytest.approx(1.0 + 0.5 * 1.0)
+    assert returns[1] == pytest.approx(1.0)
