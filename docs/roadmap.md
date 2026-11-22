@@ -69,7 +69,7 @@
 - [x] Dueling DQN 消融对比（`scripts/20_dueling_dqn.py`；普通与冗余动作版本均未超过标准 DQN，见 docs/20、docs/21）
 - [x] REINFORCE + baseline（CartPole）（`scripts/22_reinforce_cartpole.py`，1150 episodes 达标）
 - [x] Actor-Critic / A2C（`scripts/23_actor_critic_cartpole.py`，n=5，约 1000 episodes 达标）
-- [ ] PPO（连续动作：Pendulum 或 LunarLander）
+- [x] PPO（离散动作：CartPole，`scripts/24_ppo_cartpole.py`）
 - [ ] 训练稳定性：多 seed 均值 ± 方差曲线
 
 验收：每个算法 ≥ 3 个 seed，报告 return 曲线和最终性能；代码复用同一套训练循环。

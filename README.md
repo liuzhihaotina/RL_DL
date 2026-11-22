@@ -61,6 +61,7 @@ RL_DL/
 │   ├── 21_redundant_dueling.md  # 冗余动作版 CartPole
 │   ├── 22_reinforce_cartpole.md  # REINFORCE + baseline
 │   ├── 23_actor_critic_cartpole.md  # Actor-Critic（A2C）
+│   ├── 24_ppo_cartpole.md  # PPO
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -84,6 +85,7 @@ RL_DL/
 │   ├── dqn.py              # Q 网络 / 经验回放 / ε 衰减
 │   ├── redundant_cartpole.py  # 冗余动作 CartPole 包装器
 │   ├── policy_gradient.py    # 策略网络 / Value baseline / REINFORCE 损失
+│   ├── ppo.py                # GAE
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -107,7 +109,8 @@ RL_DL/
 │   ├── 19_dqn_cartpole.py        # 实验 19：DQN / Double DQN
 │   ├── 20_dueling_dqn.py         # 实验 20：Dueling DQN vs 标准 DQN
 │   ├── 22_reinforce_cartpole.py  # 实验 22：REINFORCE + baseline
-│   └── 23_actor_critic_cartpole.py  # 实验 23：Actor-Critic
+│   ├── 23_actor_critic_cartpole.py  # 实验 23：Actor-Critic
+│   └── 24_ppo_cartpole.py           # 实验 24：PPO
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -124,7 +127,8 @@ RL_DL/
 │   ├── test_importance.py    # 重要性采样
 │   ├── test_dqn.py           # DQN 组件
 │   ├── test_redundant_cartpole.py  # 冗余动作映射
-│   └── test_policy_gradient.py     # 策略梯度组件
+│   ├── test_policy_gradient.py     # 策略梯度组件
+│   └── test_ppo.py                 # GAE
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -148,7 +152,8 @@ DQN 见 [docs/19_dqn_cartpole.md](docs/19_dqn_cartpole.md)，
 Dueling DQN 见 [docs/20_dueling_dqn.md](docs/20_dueling_dqn.md)，
 冗余动作实验见 [docs/21_redundant_dueling.md](docs/21_redundant_dueling.md)，
 REINFORCE 见 [docs/22_reinforce_cartpole.md](docs/22_reinforce_cartpole.md)，
-Actor-Critic 见 [docs/23_actor_critic_cartpole.md](docs/23_actor_critic_cartpole.md)。
+Actor-Critic 见 [docs/23_actor_critic_cartpole.md](docs/23_actor_critic_cartpole.md)，
+PPO 见 [docs/24_ppo_cartpole.md](docs/24_ppo_cartpole.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
@@ -163,7 +168,7 @@ uv run python scripts/02_visual_explain.py
 - [x] 阶段 1：深度学习基础（张量、autograd、手写 MLP/优化器）
 - [x] 阶段 2：PyTorch 工程化（nn.Module、DataLoader、CNN）
 - [x] 阶段 3：强化学习基础（bandit、MDP、DP、MC/TD）
-- [ ] 阶段 4：深度强化学习（DQN、REINFORCE、PPO）
+- [x] 阶段 4：深度强化学习（DQN、REINFORCE、PPO）
 - [ ] 阶段 5：综合项目
 
 ## 约定
