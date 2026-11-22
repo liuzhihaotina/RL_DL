@@ -65,6 +65,7 @@ RL_DL/
 │   ├── 22_reinforce_cartpole.md  # REINFORCE + baseline
 │   ├── 23_actor_critic_cartpole.md  # Actor-Critic（A2C）
 │   ├── 24_ppo_cartpole.md  # PPO
+│   ├── 25_pendulum_intro.md  # Pendulum 连续动作入门
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -113,7 +114,8 @@ RL_DL/
 │   ├── 20_dueling_dqn.py         # 实验 20：Dueling DQN vs 标准 DQN
 │   ├── 22_reinforce_cartpole.py  # 实验 22：REINFORCE + baseline
 │   ├── 23_actor_critic_cartpole.py  # 实验 23：Actor-Critic
-│   └── 24_ppo_cartpole.py           # 实验 24：PPO
+│   ├── 24_ppo_cartpole.py           # 实验 24：PPO
+│   └── 25_pendulum_intro.py         # 实验 25：Pendulum 入门
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -156,7 +158,8 @@ Dueling DQN 见 [docs/20_dueling_dqn.md](docs/20_dueling_dqn.md)，
 冗余动作实验见 [docs/21_redundant_dueling.md](docs/21_redundant_dueling.md)，
 REINFORCE 见 [docs/22_reinforce_cartpole.md](docs/22_reinforce_cartpole.md)，
 Actor-Critic 见 [docs/23_actor_critic_cartpole.md](docs/23_actor_critic_cartpole.md)，
-PPO 见 [docs/24_ppo_cartpole.md](docs/24_ppo_cartpole.md)。
+PPO 见 [docs/24_ppo_cartpole.md](docs/24_ppo_cartpole.md)，
+Pendulum 入门见 [docs/25_pendulum_intro.md](docs/25_pendulum_intro.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
