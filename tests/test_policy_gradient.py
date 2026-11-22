@@ -10,6 +10,7 @@ import torch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from rldl.policy_gradient import (
+    ContinuousPolicyNetwork,
     PolicyNetwork,
     ValueNetwork,
     compute_returns,
@@ -81,3 +82,18 @@ def test_n_step_returns_stops_at_terminal() -> None:
 
     assert returns[0] == pytest.approx(1.0 + 0.5 * 1.0)
     assert returns[1] == pytest.approx(1.0)
+
+
+
+def test_continuous_policy_distribution() -> None:
+    actor = ContinuousPolicyNetwork(obs_dim=3, action_dim=1, hidden=32)
+    state = torch.randn(8, 3)
+    mu = actor.forward(state)
+    assert mu.shape == (8, 1)
+
+    dist = actor.distribution(state)
+    action = dist.sample()
+    log_prob = dist.log_prob(action)
+    assert action.shape == (8, 1)
+    assert log_prob.shape == (8, 1)
+    assert torch.isfinite(log_prob).all()

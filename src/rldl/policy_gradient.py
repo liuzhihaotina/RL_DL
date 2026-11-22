@@ -120,3 +120,27 @@ def n_step_returns(
         out[t] = total
 
     return out
+
+
+
+class ContinuousPolicyNetwork(nn.Module):
+    """连续动作策略：输出高斯分布的均值，标准差是可学习参数。"""
+
+    def __init__(self, obs_dim: int, action_dim: int, hidden: int = 128) -> None:
+        super().__init__()
+        self.feature = nn.Sequential(
+            nn.Linear(obs_dim, hidden),
+            nn.ReLU(),
+            nn.Linear(hidden, hidden),
+            nn.ReLU(),
+        )
+        self.mu = nn.Linear(hidden, action_dim)
+        self.log_std = nn.Parameter(torch.zeros(action_dim))
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        return self.mu(self.feature(x))
+
+    def distribution(self, x: torch.Tensor) -> torch.distributions.Normal:
+        mu = self.forward(x)
+        std = self.log_std.clamp(-20.0, 2.0).exp()
+        return torch.distributions.Normal(mu, std)

@@ -37,3 +37,32 @@ def compute_gae(
 
     returns = advantages + values
     return advantages, returns
+
+
+
+def compute_gae_bootstrap(
+    rewards: np.ndarray,
+    values: np.ndarray,
+    last_value: float,
+    gamma: float = 0.99,
+    lam: float = 0.95,
+) -> tuple[np.ndarray, np.ndarray]:
+    """处理截断回合（没有真正终止）的 GAE。
+
+    最后一步用 last_value = V(s_{T}) 自举，而不是把 done 当成终止。
+    """
+    rewards = np.asarray(rewards, dtype=np.float32)
+    values = np.asarray(values, dtype=np.float32)
+    length = len(rewards)
+
+    advantages = np.zeros(length, dtype=np.float32)
+    last = 0.0
+    next_value = float(last_value)
+    for t in reversed(range(length)):
+        delta = rewards[t] + gamma * next_value - values[t]
+        last = delta + gamma * lam * last
+        advantages[t] = last
+        next_value = values[t]
+
+    returns = advantages + values
+    return advantages, returns
