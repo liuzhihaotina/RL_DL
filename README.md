@@ -67,6 +67,7 @@ RL_DL/
 │   ├── 24_ppo_cartpole.md  # PPO
 │   ├── 25_pendulum_intro.md  # Pendulum 连续动作入门
 │   ├── 26_ppo_pendulum.md   # 连续动作 PPO
+│   ├── 27_ppo_pointmass.md  # 自建 PointMass 环境
 │   └── images/             # 文档用图
 ├── configs/                # 实验配置（mnist_cnn.toml）
 ├── src/rldl/
@@ -91,6 +92,7 @@ RL_DL/
 │   ├── redundant_cartpole.py  # 冗余动作 CartPole 包装器
 │   ├── policy_gradient.py    # 策略网络 / Value baseline / REINFORCE 损失
 │   ├── ppo.py                # GAE
+│   ├── pointmass.py          # 自建 PointMass 环境
 │   └── utils.py            # 设备选择、随机种子
 ├── scripts/
 │   ├── 01_mlp_moons.py       # 实验 01：二分类 MLP
@@ -117,7 +119,8 @@ RL_DL/
 │   ├── 23_actor_critic_cartpole.py  # 实验 23：Actor-Critic
 │   ├── 24_ppo_cartpole.py           # 实验 24：PPO
 │   ├── 25_pendulum_intro.py         # 实验 25：Pendulum 入门
-│   └── 26_ppo_pendulum.py           # 实验 26：连续动作 PPO
+│   ├── 26_ppo_pendulum.py           # 实验 26：连续动作 PPO
+│   └── 27_ppo_pointmass.py          # 实验 27：自建环境 + PPO
 ├── tests/
 │   ├── test_smoke.py         # 环境与手写 MLP 冒烟测试
 │   ├── test_softmax.py       # softmax / 交叉熵正确性测试
@@ -135,7 +138,8 @@ RL_DL/
 │   ├── test_dqn.py           # DQN 组件
 │   ├── test_redundant_cartpole.py  # 冗余动作映射
 │   ├── test_policy_gradient.py     # 策略梯度组件
-│   └── test_ppo.py                 # GAE
+│   ├── test_ppo.py                 # GAE
+│   └── test_pointmass.py           # 自建环境
 └── outputs/                # 实验产物（本地生成，不入库）
 ```
 
@@ -162,7 +166,8 @@ REINFORCE 见 [docs/22_reinforce_cartpole.md](docs/22_reinforce_cartpole.md)，
 Actor-Critic 见 [docs/23_actor_critic_cartpole.md](docs/23_actor_critic_cartpole.md)，
 PPO 见 [docs/24_ppo_cartpole.md](docs/24_ppo_cartpole.md)，
 Pendulum 入门见 [docs/25_pendulum_intro.md](docs/25_pendulum_intro.md)，
-连续动作 PPO 见 [docs/26_ppo_pendulum.md](docs/26_ppo_pendulum.md)。
+连续动作 PPO 见 [docs/26_ppo_pendulum.md](docs/26_ppo_pendulum.md)，
+自建环境见 [docs/27_ppo_pointmass.md](docs/27_ppo_pointmass.md)。
 图由脚本生成，改完超参后重新跑：
 
 ```bash
